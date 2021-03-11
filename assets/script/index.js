@@ -55,12 +55,12 @@ function makeRecipeListe(elm){
 
 function makeBaliseIng(elm){
     let liNode = makeBalise({type: "li"})
-    let ing =  makeBalise({type : "span", text: elm.ingredient});
+    let ing =  makeBalise({type : "span", text: elm.ingredient+": "});
     liNode.appendChild(ing);
     if( elm.quantity){
-        let point =  makeBalise({type : "span", text: " : "});
+/*         let point =  makeBalise({type : "span", text: " : "}); */
         let quantity =  makeBalise({type : "span", text: elm.quantity});
-        liNode.appendChild(point);
+/*         liNode.appendChild(point); */
         liNode.appendChild(quantity);
         if(elm.unit){
             let unite =  makeBalise({type : "span", text: " " + elm.unit});

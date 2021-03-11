@@ -14,9 +14,14 @@ $tertiary_box_back: #ED6454
 html
     font-size: 62.5%
     padding: 3rem 6.3% 0 6.3%
+    font-family: 'Lato', sans-serif
 body
     display: grid
     grid-gap: 3rem
+h2
+    font-size: 1.8rem
+    line-height: 2.1rem
+    font-weight: 400
 header
     place-self: center
     display: grid
@@ -31,13 +36,11 @@ main
     grid-gap: 3rem
 
 .formulaire
-    display: flex
-    flex-direction: row
-    flex-wrap: wrap
+    display: grid
     height: auto
+    grid-gap: 2rem
     &_search
         width: 100%
-        margin-bottom: 2rem
         position: relative
         &_barre-recherche
             width: 100%
@@ -54,16 +57,45 @@ main
             top: 25%
             width: 3.2rem
             height: 3.2rem
+    &_tag
+        display: grid
+        width: 100%
+        grid-template-columns: repeat(auto-fill, 10%)
+        grid-auto-columns: 10rem
+        row-gap: 1rem
+        column-gap: 1.25%
+        &_div
+            background-color: $primary_box_back
+            font-size: 1.4rem
+            color: white
+            padding: 1rem
+            border-radius: .5rem
+            display: flex
+            justify-content: space-between
+            align-items: center
+            & button
+                border: .2rem solid white
+                background-color: unset
+                color: white
+                padding: .5rem
+                border-radius: 50%
+                width: 2rem
+                height: 2rem
+                display: flex
+                justify-content: center
+                align-items: center
     &_input
         display: grid
+        grid-template-columns: repeat(3, 20%)
+        grid-gap: 1rem
+        width: 100%
         & input
             font-size: 1.8rem
             color: white
             height: 5rem
-            grid-template-columns: 1fr 1fr 1fr
-            grid-gap: 1rem
             border-radius: .5rem
             border: none
+            width: auto
             padding: 1rem
             line-height: 2.1rem
             &::placeholder
@@ -90,10 +122,13 @@ main
             object-fit: cover
     &_description
         padding: 2rem
+        font-size: 1.2rem
+        font-weight: 400
         &_title
             display: flex
             justify-content: space-between
             align-items: baseline
+            margin-bottom: 2rem
             &_dure
                 font-size: 1.8rem
                 font-weight: 700
@@ -108,8 +143,14 @@ main
         &_detail
             display: grid
             grid-template-columns: 1fr 1fr
+            &_ingredient
+                overflow-y: auto
+                max-height: 10rem
+                & li span:nth-child(1)
+                    font-weight: 700
             &_resume
                 overflow-y: auto
                 max-height: 10rem
+                font-family: 'Roboto', sans-serif
             & li
                 list-style: none

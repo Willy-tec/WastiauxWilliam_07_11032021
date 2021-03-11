@@ -1,0 +1,74 @@
+$primary_background: #E7E7E7
+$secondary_background: #C7BEBE
+
+
+
+
+*
+    margin: 0
+    padding: 0
+html
+    font-size: 62.5%
+    padding: 3rem 6.3% 0 6.3%
+body
+    display: grid
+    grid-gap: 3rem
+nav
+    place-self: center
+    display: grid
+    place-items: center
+form
+
+main
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    grid-gap: 3rem
+
+.formulaire
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    height: 10rem
+    &_barre-recherche
+        width: 100%
+        margin-bottom: 2rem
+    &_loupe
+        position: relative
+.recette
+    background-color: $primary_background
+    border-radius: .5rem
+    overflow: hidden
+    &_image
+        height: 18rem
+        width: 100%
+        background-color: $secondary_background
+        border-radius: .5rem .5rem 0 0
+        & img
+            width: 100%
+            height: 100%
+            object-fit: cover
+    &_description
+        padding: 2rem
+        &_title
+            display: flex
+            justify-content: space-between
+            align-items: baseline
+            &_dure
+                font-size: 1.8rem
+                font-weight: 700
+                vertical-align: center
+                flex-wrap: wrap
+                &::before
+                    content: url("../images/horloge.svg")
+                    right: .5rem
+                    top: .4rem
+                    position: relative
+
+        &_detail
+            display: grid
+            grid-template-columns: 1fr 1fr
+            &_resume
+                overflow-y: auto
+                max-height: 10rem
+            & li
+                list-style: none

@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  padding: 3rem 6.3% 0 6.3%;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 3rem;
+}
+
+nav {
+  place-self: center;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3rem;
+}
+
+.formulaire {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 10rem;
+}
+
+.formulaire_barre-recherche {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.formulaire_loupe {
+  position: relative;
+}
+
+.recette {
+  background-color: #E7E7E7;
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+.recette_image {
+  height: 18rem;
+  width: 100%;
+  background-color: #C7BEBE;
+  border-radius: .5rem .5rem 0 0;
+}
+
+.recette_image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.recette_description {
+  padding: 2rem;
+}
+
+.recette_description_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.recette_description_title_dure {
+  font-size: 1.8rem;
+  font-weight: 700;
+  vertical-align: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.recette_description_title_dure::before {
+  content: url("../images/horloge.svg");
+  right: .5rem;
+  top: .4rem;
+  position: relative;
+}
+
+.recette_description_detail {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.recette_description_detail_resume {
+  overflow-y: auto;
+  max-height: 10rem;
+}
+
+.recette_description_detail li {
+  list-style: none;
+}
+/*# sourceMappingURL=index.css.map */

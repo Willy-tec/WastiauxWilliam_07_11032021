@@ -1,6 +1,10 @@
 $primary_background: #E7E7E7
 $secondary_background: #C7BEBE
+$primary_font: #D04F4F
 
+$primary_box_back: #3282F7
+$secondary_box_back: #68D9A4
+$tertiary_box_back: #ED6454
 
 
 
@@ -13,11 +17,13 @@ html
 body
     display: grid
     grid-gap: 3rem
-nav
+header
     place-self: center
     display: grid
     place-items: center
-form
+    font-size: 3.6rem
+    color: $primary_font
+nav
 
 main
     display: grid
@@ -28,12 +34,47 @@ main
     display: flex
     flex-direction: row
     flex-wrap: wrap
-    height: 10rem
-    &_barre-recherche
+    height: auto
+    &_search
         width: 100%
         margin-bottom: 2rem
-    &_loupe
         position: relative
+        &_barre-recherche
+            width: 100%
+            height: 7rem
+            font-size: 2.4rem
+            line-height: 2.1rem
+            padding: 1rem
+            background-color: $primary_background
+            border-radius: .5rem
+            border: none
+        &_loupe
+            position: absolute
+            right: 1rem
+            top: 25%
+            width: 3.2rem
+            height: 3.2rem
+    &_input
+        display: grid
+        & input
+            font-size: 1.8rem
+            color: white
+            height: 5rem
+            grid-template-columns: 1fr 1fr 1fr
+            grid-gap: 1rem
+            border-radius: .5rem
+            border: none
+            padding: 1rem
+            line-height: 2.1rem
+            &::placeholder
+                color: white
+            &.ingredient
+                background-color: $primary_box_back
+            &.appareil
+                background-color: $secondary_box_back
+            &.outils
+                background-color: $tertiary_box_back
+
 .recette
     background-color: $primary_background
     border-radius: .5rem

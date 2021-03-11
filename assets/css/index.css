@@ -14,11 +14,13 @@ body {
   grid-gap: 3rem;
 }
 
-nav {
+header {
   place-self: center;
   display: -ms-grid;
   display: grid;
   place-items: center;
+  font-size: 3.6rem;
+  color: #D04F4F;
 }
 
 main {
@@ -39,16 +41,78 @@ main {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 10rem;
+  height: auto;
 }
 
-.formulaire_barre-recherche {
+.formulaire_search {
   width: 100%;
   margin-bottom: 2rem;
+  position: relative;
 }
 
-.formulaire_loupe {
-  position: relative;
+.formulaire_search_barre-recherche {
+  width: 100%;
+  height: 7rem;
+  font-size: 2.4rem;
+  line-height: 2.1rem;
+  padding: 1rem;
+  background-color: #E7E7E7;
+  border-radius: .5rem;
+  border: none;
+}
+
+.formulaire_search_loupe {
+  position: absolute;
+  right: 1rem;
+  top: 25%;
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.formulaire_input {
+  display: -ms-grid;
+  display: grid;
+}
+
+.formulaire_input input {
+  font-size: 1.8rem;
+  color: white;
+  height: 5rem;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  border-radius: .5rem;
+  border: none;
+  padding: 1rem;
+  line-height: 2.1rem;
+}
+
+.formulaire_input input::-webkit-input-placeholder {
+  color: white;
+}
+
+.formulaire_input input:-ms-input-placeholder {
+  color: white;
+}
+
+.formulaire_input input::-ms-input-placeholder {
+  color: white;
+}
+
+.formulaire_input input::placeholder {
+  color: white;
+}
+
+.formulaire_input input.ingredient {
+  background-color: #3282F7;
+}
+
+.formulaire_input input.appareil {
+  background-color: #68D9A4;
+}
+
+.formulaire_input input.outils {
+  background-color: #ED6454;
 }
 
 .recette {

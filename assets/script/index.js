@@ -7,8 +7,8 @@ function makeRecipeNode(elm){
     nodeArticle.className="recette";
     nodeArticle.setAttribute("data-id", elm.id)
 
-    let imageDiv = document.createElement("div");
-    imageDiv.className = "recette_image";
+    let imageDiv = makeBalise({classTitle: "recette_image"})
+
     // Es ce qu'on ajoute la balise img ?
 
     nodeArticle.appendChild(imageDiv);
@@ -19,16 +19,14 @@ function makeRecipeNode(elm){
 }
 
 function makeRecipeDescription(elm){
-    let div = document.createElement("div");
-    div.className = "recette_description";
-
+    let div = makeBalise({classTitle: "recette_description"})
     div.appendChild(makeRecipeDescriptionTitle(elm))
     div.appendChild(makeRecipeDescriptionDetail(elm))
     return div;
 }
 
 function makeRecipeDescriptionTitle(elm){
-    let titleDiv = makeBalise({title : "div", classTitle :"recette_description_title"})
+    let titleDiv = makeBalise({classTitle :"recette_description_title"})
     let h2 = makeBalise({type : "H2", text: elm.name});
     let dure = makeBalise({type: "p",classTitle: "recette_description_title_dure", text: elm.time+" min"});
 
@@ -88,22 +86,3 @@ recipes.forEach(elm =>{
 
 
 
-
-let okButton = document.querySelector(".formulaire_loupe")
-okButton.addEventListener("click", listenMe)
-let boolan= false;
-function listenMe(evt){
-
-    evt.preventDefault();
-    if(boolan){boolan=false
-            nodeArray.sort((a , b)=>{
-        return a.querySelector("h2").textContent - b.querySelector("h2").textContent
-    })
-    }
-    else {boolan=true
-        nodeArray.sort((a , b)=> {
-            return a.getAttribute("data-id")-b.getAttribute("data-id")
-        })
-    }
-    console.log(nodeArray)
-}

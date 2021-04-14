@@ -78,9 +78,17 @@ class Recettes {
   }
 
   display(node, type){
-    let list = type == "ingredient" ? this.ingredient_liste : type == "outil" ? this.outils_liste : this.appareil_liste;
+    let list = (type == "ingredient") ? this.ingredient_liste : type == "outil" ? this.outils_liste : this.appareil_liste;
     node.innerHTML = "";
     list.forEach(el => {
+      node.innerHTML += `<p data-type = ${type}>${el}</p>`;
+    })
+
+  }
+  display_when_tag_input(node, type, liste){
+    
+    node.innerHTML = "";
+    liste.forEach(el => {
       node.innerHTML += `<p data-type = ${type}>${el}</p>`;
     })
 
@@ -170,9 +178,16 @@ class Recettes {
     }
     filtrer_via_input(inpuString){
       let str = this.normalizeStr(inpuString);
-      console.log(this.recettes_listes)
-      this.recettes_listes.forEach(el=>{
-        if(el.)
+      //console.log(this.recettes_listes)
+      return this.recettes_listes.filter(el=>{
+        let string = this.normalizeStr(el.name)
+        if(string.match(str)) return el
+        string = this.normalizeStr(el.description)
+        if(string.match(str)) return el
+        el.ingredients.forEach(elt =>{
+          string = this.normalizeStr(elt.ingredient)
+          if(string.match(str)) return el
+        })
       })
     }
 }
@@ -184,11 +199,18 @@ let searchBar = document.body.querySelector(".formulaire_search_barre-recherche"
 searchBar.addEventListener("input", listenerInputSearchBar);
 
 function listenerInputSearchBar(ev){
-  recettes.filtrer_via_input(ev.target.value)
+  let arr = recettes.filtrer_via_input(ev.target.value);
+  upgrade_affichage_liste_recette_custom(arr)
 }
 
 
+let inputIng = document.querySelector(".formulaire_input_container_ingredient")
+
+inputIng.addEventListener("input", changeIntoTagSearch )
 
 
+function changeIntoTagSearch(){
+  console.log(recettes.get_ingredient_liste)
+  display_when_tag_input(ingredient_balise, "ingredient", arr)
 
-
+}

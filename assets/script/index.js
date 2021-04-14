@@ -95,6 +95,14 @@ function upgrade_affichage_liste_recette(){
   })
 }
 
+function upgrade_affichage_liste_recette_custom(liste){
+  main.innerHTML = "";
+  console.log(liste)
+  liste.forEach(elm => {
+    main.appendChild(makeRecipeNode(elm));
+  })
+}
+
 upgrade_liste_item_tag();
 upgrade_affichage_liste_recette();
 

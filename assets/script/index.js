@@ -1,88 +1,102 @@
-console.log(recipes[0])
+const nodeArray = []
+const d = document;
+const main = d.querySelector("main");
+/* const ingredient_balise = d.querySelector(".formulaire_input_container_liste"); */
+const containerList = d.querySelectorAll(".formulaire_input_container");
+const formulaire_tag = d.querySelector(".formulaire_tag")
 
-let nodeArray = []
-
-function makeRecipeNode(elm){
-    let nodeArticle = document.createElement("article");
-    nodeArticle.className="recette";
-    nodeArticle.setAttribute("data-id", elm.id)
-
-    let imageDiv = makeBalise({classTitle: "recette_image"})
-
-    // Es ce qu'on ajoute la balise img ?
-
-    nodeArticle.appendChild(imageDiv);
-    nodeArticle.appendChild(makeRecipeDescription(elm));
-
-    return nodeArticle;
-
-}
-
-function makeRecipeDescription(elm){
-    let div = makeBalise({classTitle: "recette_description"})
-    div.appendChild(makeRecipeDescriptionTitle(elm))
-    div.appendChild(makeRecipeDescriptionDetail(elm))
-    return div;
-}
-
-function makeRecipeDescriptionTitle(elm){
-    let titleDiv = makeBalise({classTitle :"recette_description_title"})
-    let h2 = makeBalise({type : "H2", text: elm.name});
-    let dure = makeBalise({type: "p",classTitle: "recette_description_title_dure", text: elm.time+" min"});
-
-    titleDiv.appendChild(h2);
-    titleDiv.appendChild(dure);
-
-    return titleDiv
-}
-
-function makeRecipeDescriptionDetail(elm){
-    let detail = makeBalise({type: "div", classTitle: "recette_description_detail"})
-    detail.appendChild(makeRecipeListe(elm))
-    detail.appendChild(makeBalise({type:"div", classTitle:"recette_description_detail_resume", text: elm.description}))
-    return detail
-}
-
-function makeRecipeListe(elm){
-    let ulDiv = makeBalise({type: "ul", classTitle:"recette_description_detail_ingredient"})
-    elm.ingredients.forEach(item =>{
-        ulDiv.appendChild(makeBaliseIng(item))
-    })
-    return ulDiv
-}
-
-function makeBaliseIng(elm){
-    let liNode = makeBalise({type: "li"})
-    let ing =  makeBalise({type : "span", text: elm.ingredient+": "});
-    liNode.appendChild(ing);
-    if( elm.quantity){
-/*         let point =  makeBalise({type : "span", text: " : "}); */
-        let quantity =  makeBalise({type : "span", text: elm.quantity});
-/*         liNode.appendChild(point); */
-        liNode.appendChild(quantity);
-        if(elm.unit){
-            let unite =  makeBalise({type : "span", text: " " + elm.unit});
-            liNode.appendChild(unite);
-        }
-    }
-    return liNode;
-}
-
-function makeBalise({type="div", classTitle, text}){
-    let div = document.createElement(type);
-    if(classTitle) div.className = classTitle;
-    if(text) div.textContent = text;
-    return div;
-}
-
-let main = document.querySelector("main")
+formulaire_tag.innerHTML = "";
 main.innerHTML = "";
 
-recipes.forEach(elm =>{
-    nodeArray.push(makeRecipeNode(elm));
-    main.appendChild(nodeArray[nodeArray.length-1]);
+
+
+let recettes = new Recettes(recipes);
+let advSearchArr = []
+let tagList = [];
+/**
+ * Mise en place des listeners liée au champ de recherche "ingredient", "outil" et "appareil"
+ */
+containerList.forEach(elt => {
+
+  elt.querySelector("button").addEventListener("click", ()=>
+  {
+    showInputSearch(elt);
+    window.addEventListener("click",function fn1(e){
+
+      if(e.target.nodeName!=="INPUT"){
+        hideInputSearch(elt);
+        window.removeEventListener("click", fn1, true)
+      }
+      if(e.target.nodeName==="P"){
+        ajoutTag(e.target.textContent, e.target.dataset.type)
+      } 
+    },{capture:true})
+  })
 })
 
+function showInputSearch(elt){
+  elt.querySelector("button").classList.add("hide");
+  elt.querySelector("input").classList.remove("hide");
+  elt.querySelector("div").classList.remove("hide");
+  elt.querySelector("input").focus();
+}
+
+function hideInputSearch(elt){
+  elt.querySelector("button").classList.remove("hide");
+  elt.querySelector("input").classList.add("hide");
+  elt.querySelector("div").classList.add("hide");
+}
+
+Tag.setListener(updtateTagFilter)
+
+function ajoutTag(el, type){
+  new Tag(el, type).display(formulaire_tag);
+}
+
+/**
+ * Listener de la classe Tag qui est appellé a chaque création, ou suppression de tag.
+ */
+ function updtateTagFilter(){
+
+  let tag_container = document.querySelectorAll("div.formulaire_tag div")
+  recettes.reset_liste(recipes);
+
+  for(let tag of tag_container){
+    let str = tag.querySelector("span")
+    recettes.reset_liste(recettes.filtrer(str.textContent, str.dataset.type))
+  }
+
+  upgrade_liste_item_tag();
+  upgrade_affichage_liste_recette();
+}
 
 
 
+const tag_search_container = document.querySelectorAll(".formulaire_input_container_liste")
+const ingredient_balise = tag_search_container[0]
+const outil_balise = tag_search_container[2]
+const appareil_balise = tag_search_container[1]
+
+function upgrade_liste_item_tag(){
+  recettes.make_ingredient_liste()
+  recettes.display(ingredient_balise, "ingredient")
+
+  recettes.make_appareil_liste()
+  recettes.display(appareil_balise, "appareil")
+
+  recettes.make_outils_liste()
+  recettes.display(outil_balise, "outil")
+}
+
+function upgrade_affichage_liste_recette(){
+  main.innerHTML = ""
+  recettes.recettes_listes.forEach(elm => {
+    main.appendChild(makeRecipeNode(elm));
+  })
+}
+
+upgrade_liste_item_tag();
+upgrade_affichage_liste_recette();
+
+
+// Bug avec "thon rouge ou blanc"

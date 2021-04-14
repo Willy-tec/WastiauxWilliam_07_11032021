@@ -2,8 +2,8 @@ let body = document.querySelector("body")
 let okButton = body.querySelector(".formulaire_search_loupe")
 okButton.addEventListener("click", listenMe)
 let boolan= false;
-function listenMe(evt){
 
+function listenMe(evt){
     evt.preventDefault();
     if(boolan){boolan=false
             nodeArray.sort((a , b)=>{
@@ -23,9 +23,14 @@ function orderHtmlByArray(){
     nodeArray.forEach((elm, i) => elm.style.order = i)
 }
 
-let searchBar = body.querySelector(".formulaire_search_barre-recherche");
-searchBar.addEventListener("input", searchListener);
+/* let searchBar = body.querySelector(".formulaire_search_barre-recherche");
+searchBar.addEventListener("input", searchListener); */
 
+
+/**
+ * Fonctionalité a tester en double pour exo 2 algo
+ * @param {event} evt 
+ */
 function searchListener(evt){
     let str = evt.target.value;
     if(str.length>2){
@@ -34,7 +39,7 @@ function searchListener(evt){
         filteredArr.forEach((elm, index)=>{
             if(elm === undefined) nodeArray[index].style.display = "none";
             else nodeArray[index].style.display = "block";
-            console.log(str)
+            
         })
     }
 }
@@ -45,5 +50,8 @@ function findInTitle(arr, str){
         if(testStr.match(str)) return elt})
     return nouvArr
 }
-let est = findInTitle(nodeArray, "Cru")
-console.log(est)
+
+
+function normaliser(str){
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+}

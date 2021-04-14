@@ -9,7 +9,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/index.css">
+
     <script src="assets/script/recipes.js" defer></script>
+
+    <script src="assets/script/fabricNodeRecipe.js" defer></script>
+<!--     <script src="assets/script/listeTag.js" defer></script> -->
+    <script src="assets/script/tag.js" defer></script>
+    <script src="assets/script/classe_recipe.js" defer></script>
+
     <script src="assets/script/index.js" defer></script>
     <script src="assets/script/algo.js" defer></script>
     <link rel="shortcut icon" href="assets/images/logo_toque.svg" type="image/x-icon">
@@ -40,9 +47,21 @@
 
             </div>
         <div class="formulaire_input">
-            <input type="text" class="ingredient" name="Ingredient" id="" size="1" placeholder="Ingrédient">
-            <input type="text" class="appareil" name="Appareil" id="" size="5" placeholder="Appareil">
-            <input type="text" class="outils" name="Outils" id="" size="5" placeholder="Outils">
+          <div class="formulaire_input_container">
+            <button class="formulaire_input_button">Ingrédients</button>
+            <input type="text" class="formulaire_input_container_ingredient hide" name="Ingredient" id="" size="5" placeholder="Ingrédient">
+            <div class="formulaire_input_container_liste hide"></div>
+          </div>
+          <div class="formulaire_input_container ">
+            <button class="formulaire_input_button">Appareil</button>
+            <input type="text" class="formulaire_input_container_appareil hide" name="Appareil" id="" size="5" placeholder="Appareil">
+            <div class="formulaire_input_container_liste hide"></div>
+          </div>
+          <div class="formulaire_input_container">
+            <button class="formulaire_input_button">Outils</button>
+            <input type="text" class="formulaire_input_container_outils hide" name="Outils" id="" size="5" placeholder="Outils">
+            <div class="formulaire_input_container_liste hide"></div>
+          </div>
         </div>
     </form>
     </nav>

@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -82,7 +84,7 @@ main {
 }
 
 .formulaire_tag_div {
-  background-color: #3282F7;
+  background-color: inherit;
   font-size: 1.4rem;
   color: white;
   padding: 1rem;
@@ -98,7 +100,20 @@ main {
           align-items: center;
 }
 
+.formulaire_tag_div.appareil {
+  background-color: #68D9A4;
+}
+
+.formulaire_tag_div.outil {
+  background-color: #ED6454;
+}
+
+.formulaire_tag_div.ingredient {
+  background-color: #3282F7;
+}
+
 .formulaire_tag_div button {
+  cursor: pointer;
   border: .2rem solid white;
   background-color: unset;
   color: white;
@@ -111,56 +126,113 @@ main {
   display: -ms-grid;
   display: grid;
   place-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .formulaire_input {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (20%)[3];
-      grid-template-columns: repeat(3, 20%);
-  grid-gap: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
+  background-color: unset;
 }
 
-.formulaire_input input {
+.formulaire_input_button {
+  cursor: pointer;
+  height: auto;
+}
+
+.formulaire_input_button, .formulaire_input input {
+  position: relative;
+  width: 20rem;
   font-size: 1.8rem;
   color: white;
-  height: 5rem;
   border-radius: .5rem;
   border: none;
-  width: auto;
   padding: 1rem;
   line-height: 2.1rem;
+  background-color: inherit;
 }
 
-.formulaire_input input::-webkit-input-placeholder {
-  color: white;
+.formulaire_input_button.hide, .formulaire_input input.hide {
+  display: none;
 }
 
-.formulaire_input input:-ms-input-placeholder {
-  color: white;
+.formulaire_input_container {
+  margin-left: 10px;
+  width: auto;
+  position: relative;
+  border-radius: .5rem;
 }
 
-.formulaire_input input::-ms-input-placeholder {
-  color: white;
+.formulaire_input_container.hide {
+  display: none;
 }
 
-.formulaire_input input::placeholder {
-  color: white;
-}
-
-.formulaire_input input.ingredient {
+.formulaire_input_container:nth-child(1) {
   background-color: #3282F7;
 }
 
-.formulaire_input input.appareil {
+.formulaire_input_container:nth-child(2) {
   background-color: #68D9A4;
 }
 
-.formulaire_input input.outils {
+.formulaire_input_container:nth-child(3) {
   background-color: #ED6454;
+}
+
+.formulaire_input_container:first-child {
+  margin-left: 0;
+}
+
+.formulaire_input_container input {
+  outline: none;
+  width: 60rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.formulaire_input_container input::-webkit-input-placeholder {
+  color: white;
+}
+
+.formulaire_input_container input:-ms-input-placeholder {
+  color: white;
+}
+
+.formulaire_input_container input::-ms-input-placeholder {
+  color: white;
+}
+
+.formulaire_input_container input::placeholder {
+  color: white;
+}
+
+.formulaire_input_container_liste {
+  display: -ms-grid;
+  display: grid;
+  z-index: 10;
+  width: 60rem;
+  position: absolute;
+  -ms-grid-columns: (20rem)[3];
+      grid-template-columns: repeat(3, 20rem);
+  height: auto;
+  color: white;
+  font-size: 1.8rem;
+  line-height: 2.1rem;
+  background-color: inherit;
+}
+
+.formulaire_input_container_liste p {
+  padding: .5rem;
+}
+
+.formulaire_input_container_liste p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.formulaire_input_container_liste.hide {
+  display: none;
 }
 
 .recette {

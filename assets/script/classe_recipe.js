@@ -80,6 +80,7 @@ class Recettes {
   display(node, type){
     let list = (type == "ingredient") ? this.ingredient_liste : type == "outil" ? this.outils_liste : this.appareil_liste;
     node.innerHTML = "";
+    list.sort();
     list.forEach(el => {
       node.innerHTML += `<p data-type = ${type}>${el}</p>`;
     })

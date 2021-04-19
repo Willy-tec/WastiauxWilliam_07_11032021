@@ -25,6 +25,7 @@ containerList.forEach(elt => {
 
       if(e.target.nodeName!=="INPUT"){
         hideInputSearch(elt);
+
         window.removeEventListener("click", fn1, true)
       }
       if(e.target.nodeName==="P"){
@@ -34,7 +35,34 @@ containerList.forEach(elt => {
   })
 })
 
+containerList.forEach(elt => {
+  elt.querySelector("input").addEventListener("input", updateTagSelectorListing)
+})
+
+
+
+function updateTagSelectorListing(ev){
+  let workingDiv = ev.target.parentNode.querySelector("div");
+  let strToEval = normaliser(ev.target.value);
+  let array = workingDiv.querySelectorAll("p")
+  array.forEach(el => {
+    if(el.textContent.match(strToEval)) el.style.display = "block"
+    else  el.style.display = "none"
+  })
+
+}
+
+function resetTagSelectorListing(node){
+  let arr = node.querySelectorAll("p");
+  arr.forEach(el => {
+    el.style.display = "block"
+  })
+}
+
+
+
 function showInputSearch(elt){
+  
   elt.querySelector("button").classList.add("hide");
   elt.querySelector("input").classList.remove("hide");
   elt.querySelector("div").classList.remove("hide");
@@ -42,6 +70,8 @@ function showInputSearch(elt){
 }
 
 function hideInputSearch(elt){
+  elt.querySelector("input").value = "";
+  resetTagSelectorListing(elt.querySelector("div"));
   elt.querySelector("button").classList.remove("hide");
   elt.querySelector("input").classList.add("hide");
   elt.querySelector("div").classList.add("hide");

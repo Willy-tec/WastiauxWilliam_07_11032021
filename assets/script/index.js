@@ -41,6 +41,7 @@ containerList.forEach(elt => {
 
 
 function updateTagSelectorListing(ev){
+  ev.preventDefault();
   let workingDiv = ev.target.parentNode.querySelector("div");
   let strToEval = normaliser(ev.target.value);
   let array = workingDiv.querySelectorAll("p")
@@ -61,7 +62,6 @@ function resetTagSelectorListing(node){
 
 
 function showInputSearch(elt){
-  
   elt.querySelector("button").classList.add("hide");
   elt.querySelector("input").classList.remove("hide");
   elt.querySelector("div").classList.remove("hide");

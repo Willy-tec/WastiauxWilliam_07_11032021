@@ -22,7 +22,6 @@ containerList.forEach(elt => {
   {
     showInputSearch(elt);
     window.addEventListener("click",function fn1(e){
-console.log(e.target)
       if(e.target.nodeName!=="INPUT" || e.target.className ==="formulaire_search_barre-recherche"){
         hideInputSearch(elt);
 
@@ -84,7 +83,10 @@ function ajoutTag(el, type){
 }
 
 function normaliser(str){
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+  return str.normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .replace(/[()]/g, "")
+  .toLowerCase()
 }
 
 let searchBar = document.body.querySelector(".formulaire_search_barre-recherche");

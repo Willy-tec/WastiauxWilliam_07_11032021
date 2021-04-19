@@ -22,8 +22,8 @@ containerList.forEach(elt => {
   {
     showInputSearch(elt);
     window.addEventListener("click",function fn1(e){
-
-      if(e.target.nodeName!=="INPUT"){
+console.log(e.target)
+      if(e.target.nodeName!=="INPUT" || e.target.className ==="formulaire_search_barre-recherche"){
         hideInputSearch(elt);
 
         window.removeEventListener("click", fn1, true)

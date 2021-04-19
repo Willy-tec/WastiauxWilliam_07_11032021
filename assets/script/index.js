@@ -53,21 +53,32 @@ function ajoutTag(el, type){
   new Tag(el, type).display(formulaire_tag);
 }
 
+function normaliser(str){
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+}
+
+let searchBar = document.body.querySelector(".formulaire_search_barre-recherche");
+searchBar.addEventListener("input", updtateTagFilter);
+
+
 /**
  * Listener de la classe Tag qui est appellé a chaque création, ou suppression de tag.
  */
- function updtateTagFilter(){
+ function updtateTagFilter(ev){
 
   let tag_container = document.querySelectorAll("div.formulaire_tag div")
   recettes.reset_liste(recipes);
+/*   let arr = recettes.filtrer_via_input(ev.target.value); */
+  
 
   for(let tag of tag_container){
     let str = tag.querySelector("span")
     recettes.reset_liste(recettes.filtrer(str.textContent, str.dataset.type))
   }
-
+  recettes.reset_liste(recettes.filtrer_via_input(searchBar.value));
   upgrade_liste_item_tag();
   upgrade_affichage_liste_recette();
+  if(recettes.recettes_listes.length === 0) console.log("no recette")
 }
 
 

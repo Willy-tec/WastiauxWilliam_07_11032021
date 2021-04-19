@@ -176,37 +176,38 @@ class Recettes {
       }
     return arr;
     }
-    filtrer_via_input(inpuString){
-      let str = this.normalizeStr(inpuString);
-      //console.log(this.recettes_listes)
-      return this.recettes_listes.filter(el=>{
-        let string = this.normalizeStr(el.name)
+
+  filtrer_via_input(inpuString){
+    let str = this.normalizeStr(inpuString);
+    //console.log(this.recettes_listes)
+    return this.recettes_listes.filter(el=>{
+      let string = this.normalizeStr(el.name)
+      if(string.match(str)) return el
+      string = this.normalizeStr(el.description)
+      if(string.match(str)) return el
+      el.ingredients.forEach(elt =>{
+        string = this.normalizeStr(elt.ingredient)
         if(string.match(str)) return el
-        string = this.normalizeStr(el.description)
-        if(string.match(str)) return el
-        el.ingredients.forEach(elt =>{
-          string = this.normalizeStr(elt.ingredient)
-          if(string.match(str)) return el
-        })
       })
-    }
+    })
+  }
 }
 
 
 
 
-let searchBar = document.body.querySelector(".formulaire_search_barre-recherche");
-searchBar.addEventListener("input", listenerInputSearchBar);
 
-function listenerInputSearchBar(ev){
+
+/* function listenerInputSearchBar(ev){
   let arr = recettes.filtrer_via_input(ev.target.value);
   upgrade_affichage_liste_recette_custom(arr)
-}
+  upgrade_liste_item_tag()
+} */
 
 
-let inputIng = document.querySelector(".formulaire_input_container_ingredient")
+//let inputIng = document.querySelector(".formulaire_input_container_ingredient")
 
-inputIng.addEventListener("input", changeIntoTagSearch )
+//inputIng.addEventListener("input", changeIntoTagSearch )
 
 
 function changeIntoTagSearch(){

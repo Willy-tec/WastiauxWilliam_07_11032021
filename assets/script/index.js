@@ -110,7 +110,12 @@ searchBar.addEventListener("input", updtateTagFilter);
   recettes.reset_liste(recettes.filtrer_via_input(searchBar.value));
   upgrade_liste_item_tag();
   upgrade_affichage_liste_recette();
-  if(recettes.recettes_listes.length === 0) console.log("no recette")
+  if(recettes.recettes_listes.length === 0){
+    let errorDiv = document.createElement("div")
+    errorDiv.textContent = "Il n'y a aucune recette à afficher"
+    errorDiv.className = "errorRecipe"
+    document.querySelector("main").appendChild(errorDiv);
+  } 
 }
 
 

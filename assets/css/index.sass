@@ -143,6 +143,9 @@ main
               &:hover
                 text-decoration: underline
                 cursor: pointer
+              &[data-disable=true]
+                pointer-events: none
+                text-decoration: line-through
             &.hide
               display: none
             display: grid

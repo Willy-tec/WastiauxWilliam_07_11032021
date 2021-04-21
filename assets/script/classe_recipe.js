@@ -78,23 +78,26 @@ class Recettes {
       .toLowerCase();
   }
 
-  display(node, type){
+  display(node, type, listOfTag){
     let list = (type == "ingredient") ? this.ingredient_liste : type == "outil" ? this.outils_liste : this.appareil_liste;
     node.innerHTML = "";
+    
     list.sort();
     list.forEach(el => {
-      node.innerHTML += `<p data-type = ${type}>${el}</p>`;
+      let disable = false;
+      if(listOfTag && listOfTag.match(el)) disable = true;
+      node.innerHTML += `<p data-disable = ${disable} data-type = ${type}>${el}</p>`;
     })
 
   }
-  display_when_tag_input(node, type, liste){
+/*   display_when_tag_input(node, type, liste){
     
     node.innerHTML = "";
     liste.forEach(el => {
       node.innerHTML += `<p data-type = ${type}>${el}</p>`;
     })
 
-  }
+  } */
 
   make_simplified_str_from_array(arr){
     let simple = []

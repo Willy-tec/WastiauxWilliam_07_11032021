@@ -236,6 +236,11 @@ main {
   cursor: pointer;
 }
 
+.formulaire_input_container_liste p[data-disable=true] {
+  pointer-events: none;
+  text-decoration: line-through;
+}
+
 .formulaire_input_container_liste.hide {
   display: none;
 }

@@ -12,7 +12,7 @@ main.innerHTML = "";
 
 let recettes = new Recettes(recipes);
 let advSearchArr = []
-let tagList = [];
+//let tagList = [];
 /**
  * Mise en place des listeners liée au champ de recherche "ingredient", "outil" et "appareil"
  */
@@ -44,12 +44,12 @@ function updateTagSelectorListing(ev){
   ev.preventDefault();
   let workingDiv = ev.target.parentNode.querySelector("div");
   let strToEval = normaliser(ev.target.value);
-  let array = workingDiv.querySelectorAll("p")
+  let array = workingDiv.querySelectorAll("p");
   array.forEach(el => {
     if(el.textContent.match(strToEval)) el.style.display = "block"
-    else  el.style.display = "none"
-  })
-
+    else  el.style.display = "none";
+    })
+  
 }
 
 function resetTagSelectorListing(node){
@@ -99,12 +99,8 @@ searchBar.addEventListener("input", updtateTagFilter);
  * Listener de la classe Tag qui est appellé a chaque création, ou suppression de tag.
  */
  function updtateTagFilter(ev){
-
   let tag_container = document.querySelectorAll("div.formulaire_tag div")
   recettes.reset_liste(recipes);
-/*   let arr = recettes.filtrer_via_input(ev.target.value); */
-  
-
   for(let tag of tag_container){
     let str = tag.querySelector("span")
     recettes.reset_liste(recettes.filtrer(str.textContent, str.dataset.type))
@@ -128,14 +124,16 @@ const outil_balise = tag_search_container[2]
 const appareil_balise = tag_search_container[1]
 
 function upgrade_liste_item_tag(){
+  let listOfTag = makeTagSelectedList()
+
   recettes.make_ingredient_liste()
-  recettes.display(ingredient_balise, "ingredient")
+  recettes.display(ingredient_balise, "ingredient", listOfTag)
 
   recettes.make_appareil_liste()
-  recettes.display(appareil_balise, "appareil")
+  recettes.display(appareil_balise, "appareil", listOfTag)
 
   recettes.make_outils_liste()
-  recettes.display(outil_balise, "outil")
+  recettes.display(outil_balise, "outil", listOfTag)
 }
 
 function upgrade_affichage_liste_recette(){
@@ -156,5 +154,11 @@ function upgrade_affichage_liste_recette_custom(liste){
 upgrade_liste_item_tag();
 upgrade_affichage_liste_recette();
 
-
-// Bug avec "thon rouge ou blanc"
+function makeTagSelectedList(){
+  let arr = [];
+  let list = formulaire_tag.querySelectorAll(".formulaire_tag_div");
+  list.forEach(el => {
+    arr.push(el.querySelector("span").textContent)
+  })
+  return arr.length>0 ? arr.join(" ") : "none";
+}

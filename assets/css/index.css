@@ -223,6 +223,8 @@ main {
   font-size: 1.8rem;
   line-height: 2.1rem;
   background-color: inherit;
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
 }
 
 .formulaire_input_container_liste p {

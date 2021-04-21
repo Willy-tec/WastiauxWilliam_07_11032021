@@ -238,6 +238,27 @@ main {
   display: none;
 }
 
+.formulaire_input_container_fleche {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: -webkit-transform 250ms;
+  transition: -webkit-transform 250ms;
+  transition: transform 250ms;
+  transition: transform 250ms, -webkit-transform 250ms;
+}
+
+.formulaire_input_container.develloped .formulaire_input_container_fleche {
+  -webkit-transform: rotate(180deg) translateY(50%);
+          transform: rotate(180deg) translateY(50%);
+  -webkit-transition: -webkit-transform 250ms;
+  transition: -webkit-transform 250ms;
+  transition: transform 250ms;
+  transition: transform 250ms, -webkit-transform 250ms;
+}
+
 .recette {
   background-color: #E7E7E7;
   border-radius: .5rem;

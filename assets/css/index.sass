@@ -130,7 +130,6 @@ main
             background-color: $tertiary_box_back
           &:first-child
             margin-left: 0
-
           & input
             &::placeholder
               color: white
@@ -156,6 +155,15 @@ main
             font-size: 1.8rem
             line-height: 2.1rem
             background-color: inherit
+          &_fleche
+            position: absolute
+            right: 1rem
+            top: 50%
+            transform: translateY(-50%)
+            transition: transform 250ms
+          &.develloped &_fleche
+            transform: rotate(180deg)  translateY(50%)
+            transition: transform 250ms
 
 
 .recette

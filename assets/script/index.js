@@ -66,6 +66,7 @@ function showInputSearch(elt){
   elt.querySelector("input").classList.remove("hide");
   elt.querySelector("div").classList.remove("hide");
   elt.querySelector("input").focus();
+  elt.classList.add("develloped");
 }
 
 function hideInputSearch(elt){
@@ -74,6 +75,7 @@ function hideInputSearch(elt){
   elt.querySelector("button").classList.remove("hide");
   elt.querySelector("input").classList.add("hide");
   elt.querySelector("div").classList.add("hide");
+  elt.classList.remove("develloped");
 }
 
 Tag.setListener(updtateTagFilter)

@@ -105,7 +105,7 @@ searchBar.addEventListener("input", updtateTagFilter);
     let str = tag.querySelector("span")
     recettes.reset_liste(recettes.filtrer(str.textContent, str.dataset.type))
   }
-  recettes.reset_liste(recettes.filtrer_via_input(searchBar.value));
+  if(searchBar.value.length>2)recettes.reset_liste(recettes.filtrer_via_input(searchBar.value));
   upgrade_liste_item_tag();
   upgrade_affichage_liste_recette();
   if(recettes.recettes_listes.length === 0){

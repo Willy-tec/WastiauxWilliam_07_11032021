@@ -2,10 +2,18 @@ class Recettes {
   constructor(obj) {
     this.recettes_listes = obj;
   }
+  /**
+   * Affecter une liste de recette a notre classe. Lorsque l'on effectue des recherches, on utilise cette méthode pour actualiser la liste, et ainsi, ne pas travailler sur la liste orginale.
+   * @param {object} obj 
+   */
   reset_liste(obj){
    // this.recettes_listes = this.original_liste;
    this.recettes_listes = obj;
   }
+  /**
+   * Faire la liste des ingrédients contenu dans chaque recette
+   * @returns {array}
+   */
   make_ingredient_liste() {
     this.ingredient_liste = [];
     this.recettes_listes.forEach((element) => {
@@ -37,7 +45,10 @@ class Recettes {
     });
     return this.ingredient_liste;
   }
-
+/**
+ * Faire la liste des outils contenu dans chaque recette
+ * @returns {array}
+ */
   make_outils_liste() {
     this.outils_liste = [];
     this.recettes_listes.forEach((el) => {
@@ -48,7 +59,10 @@ class Recettes {
     });
     return this.outils_liste;
   }
-
+/**
+ * Faire la liste des appareils contenu dans chaque recette
+ * @returns {array}
+ */
   make_appareil_liste() {
     this.appareil_liste = [];
     this.recettes_listes.forEach((el) => {
@@ -69,7 +83,11 @@ class Recettes {
   get get_appareil_liste(){
     return this.appareil_liste;
   }
-
+/**
+ * Normalise un string => Supprime les caractère spéciaux, accents, parenthèse, etc, et mets tous les caractère en minuscule afin de faciliter la recherche
+ * @param {string} str 
+ * @returns {string}
+ */
   normalizeStr(str) {
     return str
       .normalize("NFD")
@@ -77,7 +95,12 @@ class Recettes {
       .replace(/[()]/g, "")
       .toLowerCase();
   }
-
+/**
+ * Afficher la liste des items correspondant au type dans la liste correspondantes. Par exemple : liste les ingrédients dans la liste ingrédient, et défini le paramètre data-disable si l'ingredient afficher est déja placer dans les tags
+ * @param {HTMLElement} node 
+ * @param {string} type 
+ * @param {string} listOfTag 
+ */
   display(node, type, listOfTag){
     let list = (type == "ingredient") ? this.ingredient_liste : type == "outil" ? this.outils_liste : this.appareil_liste;
     node.innerHTML = "";
@@ -90,34 +113,14 @@ class Recettes {
     })
 
   }
-/*   display_when_tag_input(node, type, liste){
-    
-    node.innerHTML = "";
-    liste.forEach(el => {
-      node.innerHTML += `<p data-type = ${type}>${el}</p>`;
-    })
 
-  } */
-
-  make_simplified_str_from_array(arr){
-    let simple = []
-    console.log(arr)
-    arr.forEach(el=>{
-      simple.push(el.id)
-    })
-  return simple.join("|");
-  }
-
-  revert_simplified_str_from_array(str){
-    let simple = [];
-    simple = str.split("|");
-    simple = simple.map(el => +el)
-    console.log(simple)
-    return this.recettes_listes.filter(el => simple.indexOf(el.id)!== -1 )
-  }
-
-
-
+/**
+ * Effectuer le tri des recettes selon un tag et un type de tag(ingredient, outil ou appareil)
+ * Retourne un tableau contenant la liste des recettes valide
+ * @param {string} keyword 
+ * @param {string} type 
+ * @returns {array} recipesList
+ */
   filtrer(keyword, type){
     let arr = [];
      let criteria = {
@@ -181,10 +184,14 @@ class Recettes {
       }
     return arr;
     }
-
+/**
+ * Effectuer le tri des recettes selon les inputs que l'on saisie
+ * Retourne un tableau contenant la liste des recettes valide
+ * @param {string} inpuString 
+ * @returns {array} el
+ */
   filtrer_via_input(inpuString){
     let str = this.normalizeStr(inpuString);
-    //console.log(this.recettes_listes)
     return this.recettes_listes.filter(el=>{
       let string = this.normalizeStr(el.name)
       if(string.match(str)) return el
@@ -196,27 +203,4 @@ class Recettes {
       })
     })
   }
-}
-
-
-
-
-
-
-/* function listenerInputSearchBar(ev){
-  let arr = recettes.filtrer_via_input(ev.target.value);
-  upgrade_affichage_liste_recette_custom(arr)
-  upgrade_liste_item_tag()
-} */
-
-
-//let inputIng = document.querySelector(".formulaire_input_container_ingredient")
-
-//inputIng.addEventListener("input", changeIntoTagSearch )
-
-
-function changeIntoTagSearch(){
-  console.log(recettes.get_ingredient_liste)
-  display_when_tag_input(ingredient_balise, "ingredient", arr)
-
 }

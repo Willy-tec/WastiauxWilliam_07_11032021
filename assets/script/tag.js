@@ -20,7 +20,7 @@ class Tag{
  * @param {HTMLElement} node 
  */
   display(node){
-    let div = d.createElement("div");
+    let div = document.createElement("div");
     div.innerHTML = `<span data-type="${this.type}">${this.text}</span><button><img src="assets/images/white_cross.svg" alt="Une croix pour effacer le tag"></button>`;
     div.className = `formulaire_tag_div ${this.type}`
     div.querySelector("button").onclick = ()=>{

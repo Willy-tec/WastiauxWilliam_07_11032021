@@ -1,3 +1,7 @@
+/**
+ * Créé une nouvelle classe contenant les recettes, ainsi que les methodes liées permetant le tri, ou l'affichage
+ * @class
+ */
 class Recettes {
   constructor(obj) {
     this.recettes_listes = obj;

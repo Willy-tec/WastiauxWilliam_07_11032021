@@ -1,17 +1,3 @@
-/* class Tag{
-  constructor(name){
-    this.name = name;
-    // this.nameCapital = this.name.capitalize(); 
-    this.baliseStr = `<div class="formulaire_tag_div"><span>${this.name}</span><button>X</button></div>`
-  }
-  render(){
-
-  }
-} */
-
-
-
-
 class Tag{
   static valeur = 0;
   static listener = null;

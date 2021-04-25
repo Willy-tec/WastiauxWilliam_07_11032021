@@ -9,6 +9,7 @@ html {
   font-size: 62.5%;
   padding: 3rem 6.3% 0 6.3%;
   font-family: 'Lato', sans-serif;
+  padding-bottom: 10rem;
 }
 
 body {
@@ -346,5 +347,12 @@ main {
 
 .recette_description_detail li {
   list-style: none;
+}
+
+@media (max-width: 1200px) {
+  main {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
 }
 /*# sourceMappingURL=index.css.map */

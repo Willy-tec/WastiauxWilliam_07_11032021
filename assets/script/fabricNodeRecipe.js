@@ -66,6 +66,8 @@ function makeRecipeDescriptionDetail(elm) {
     classTitle: "recette_description_detail"
   })
   detail.appendChild(makeRecipeListe(elm))
+  //make the ellipsis in case the length is above 200
+  elm.description = elm.description.length > 150 ? elm.description.slice(0,150) +"..." : elm.description
   detail.appendChild(makeBalise({
     type: "div",
     classTitle: "recette_description_detail_resume",
@@ -84,9 +86,19 @@ function makeRecipeListe(elm) {
     type: "ul",
     classTitle: "recette_description_detail_ingredient"
   })
-  elm.ingredients.forEach(item => {
+/*   elm.ingredients.forEach((item, index) => {
     ulDiv.appendChild(makeBaliseIng(item))
-  })
+  }) */
+  let index = 0;
+  for(let el of elm.ingredients){
+    index++
+    ulDiv.appendChild(makeBaliseIng(el))
+    console.log(elm.ingredients.length + " index:" +index)
+    if(index>3){
+      if(index!=elm.ingredients.length ) ulDiv.appendChild(document.createTextNode("..."))
+      break
+    } 
+  }
   return ulDiv
 }
 

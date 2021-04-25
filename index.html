@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/index.css">
     <script src="assets/script/recipes.js" defer></script>
+    <script src="assets/script/fabricNodeRecipe.js" defer></script>
+    <script src="assets/script/tag.js" defer></script>
+    <script src="assets/script/classe_recipe.js" defer></script>
     <script src="assets/script/index.js" defer></script>
     <link rel="shortcut icon" href="assets/images/logo_toque.svg" type="image/x-icon">
     <title>Les petits plats</title>
@@ -26,22 +29,26 @@
                 <input type="image" src="assets/images/loupe.svg" class="formulaire_search_loupe" value="go">
             </div>
             <div class="formulaire_tag">
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-                <div class="formulaire_tag_div"><span>Coco</span><button>X</button></div>
-
             </div>
         <div class="formulaire_input">
-            <input type="text" class="ingredient" name="Ingredient" id="" size="1" placeholder="Ingrédient">
-            <input type="text" class="appareil" name="Appareil" id="" size="5" placeholder="Appareil">
-            <input type="text" class="outils" name="Outils" id="" size="5" placeholder="Outils">
+          <div class="formulaire_input_container">
+            <button class="formulaire_input_button">Ingrédients</button>
+            <input type="text" class="formulaire_input_container_ingredient hide" name="Ingredient" id="" size="5" placeholder="Rechercher un ingrédient" autocomplete="off">
+            <div class="formulaire_input_container_liste hide"></div>
+            <img src="assets/images/fleche.svg" alt="fleche indiquant que le menu est déroulant" class="formulaire_input_container_fleche">
+          </div>
+          <div class="formulaire_input_container ">
+            <button class="formulaire_input_button">Appareil</button>
+            <input type="text" class="formulaire_input_container_appareil hide" name="Appareil" id="" size="5" placeholder="Rechercher un appareil" autocomplete="off">
+            <div class="formulaire_input_container_liste hide"></div>
+            <img src="assets/images/fleche.svg" alt="fleche indiquant que le menu est déroulant" class="formulaire_input_container_fleche">
+          </div>
+          <div class="formulaire_input_container">
+            <button class="formulaire_input_button">Outils</button>
+            <input type="text" class="formulaire_input_container_outils hide" name="Outils" id="" size="5" placeholder="Rechercher un outil" autocomplete="off">
+            <div class="formulaire_input_container_liste hide"></div>
+            <img src="assets/images/fleche.svg" alt="fleche indiquant que le menu est déroulant" class="formulaire_input_container_fleche">
+          </div>
         </div>
     </form>
     </nav>

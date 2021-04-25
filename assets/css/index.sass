@@ -11,10 +11,13 @@ $tertiary_box_back: #ED6454
 *
     margin: 0
     padding: 0
+    box-sizing: border-box
 html
     font-size: 62.5%
     padding: 3rem 6.3% 0 6.3%
     font-family: 'Lato', sans-serif
+    padding-bottom: 10rem
+    
 body
     display: grid
     grid-gap: 3rem
@@ -34,6 +37,10 @@ main
     display: grid
     grid-template-columns: 1fr 1fr 1fr
     grid-gap: 3rem
+
+.errorRecipe
+  font-size: 2rem
+  color: red
 
 .formulaire
     display: grid
@@ -65,49 +72,107 @@ main
         row-gap: 1rem
         column-gap: 1.25%
         &_div
+          &.appareil
+            background-color: $secondary_box_back
+          &.outil
+            background-color: $tertiary_box_back
+          &.ingredient
             background-color: $primary_box_back
-            font-size: 1.4rem
-            color: white
-            padding: 1rem
-            border-radius: .5rem
-            display: flex
-            justify-content: space-between
-            align-items: center
-            & button
-                border: .2rem solid white
-                background-color: unset
-                color: white
-                padding: 0rem
-                border-radius: 50%
-                width: 2rem
-                height: 2rem
-                font-size: 1.2rem
-                line-height: 1.2rem
-                display: grid
-                place-items: center
-                box-sizing: border-box
-    &_input
-        display: grid
-        grid-template-columns: repeat(3, 20%)
-        grid-gap: 1rem
-        width: 100%
-        & input
-            font-size: 1.8rem
-            color: white
-            height: 5rem
-            border-radius: .5rem
+          background-color: inherit
+          font-size: 1.4rem
+          color: white
+          padding: 1rem
+          border-radius: .5rem
+          display: flex
+          justify-content: space-between
+          align-items: center
+          & button
+            cursor: pointer
             border: none
-            width: auto
-            padding: 1rem
-            line-height: 2.1rem
+            background-color: unset
+            color: white
+            padding: 0rem
+            border-radius: 50%
+            width: 2rem
+            height: 2rem
+            display: grid
+            place-items: center
+    &_input
+        display: flex
+        width: 100%
+        background-color: unset
+        &_button
+          cursor: pointer
+          height: auto
+          text-align: left
+          margin-left: 1rem
+        &_button, & input
+          &.hide
+            display: none
+          position: relative
+          width: 20rem
+          font-size: 1.8rem
+          color: white
+          border-radius: .5rem
+          border: none
+          padding: 1rem
+          line-height: 2.1rem
+          background-color: inherit
+        &_container
+          &.hide
+            display: none
+          margin-left: 10px
+          width: auto
+          position: relative
+          border-radius: .5rem
+          &:nth-child(1)
+            background-color: $primary_box_back
+          &:nth-child(2)
+            background-color: $secondary_box_back
+          &:nth-child(3)
+            background-color: $tertiary_box_back
+          &:first-child
+            margin-left: 0
+          & input
             &::placeholder
-                color: white
-            &.ingredient
-                background-color: $primary_box_back
-            &.appareil
-                background-color: $secondary_box_back
-            &.outils
-                background-color: $tertiary_box_back
+              color: white
+            outline: none
+            width: 60rem
+            border-bottom-left-radius: 0
+            border-bottom-right-radius: 0
+          &_liste
+            & p
+              padding: .5rem
+              &:hover
+                text-decoration: underline
+                cursor: pointer
+              &[data-disable=true]
+                pointer-events: none
+                text-decoration: line-through
+            &.hide
+              display: none
+            display: grid
+            z-index: 10
+            width: 60rem
+            position: absolute
+            grid-template-columns: repeat(3, 20rem)
+            height: auto
+            color: white
+            font-size: 1.8rem
+            line-height: 2.1rem
+            background-color: inherit
+            border-bottom-left-radius: .5rem
+            border-bottom-right-radius: .5rem
+          &_fleche
+            position: absolute
+            right: 1rem
+            top: 50%
+            transform: translateY(-50%)
+            transition: transform 250ms
+          &.develloped &_fleche
+            transform: rotate(180deg)  translateY(50%)
+            transition: transform 250ms
+
 
 .recette
     background-color: $primary_background
@@ -156,3 +221,7 @@ main
                 font-family: 'Roboto', sans-serif
             & li
                 list-style: none
+
+@media ( max-width: 1200px )
+  main
+    grid-template-columns: 1fr 1fr

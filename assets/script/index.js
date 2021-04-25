@@ -178,18 +178,3 @@ function makeTagSelectedList(){
   return arr.length>0 ? arr.join(" ") : "none";
 }
 
-
-
-
-///////////////////////////////// TEEEEEEEEESST /////////////////////////////
-
-const describing = document.querySelectorAll(".recette_description")
-describing[0].addEventListener("change", ()=>{
-  console.log("change")
-})
-let t = describing[0].querySelector(".recette_description_detail_resume")
-
-console.log(t)
-window.onresize = ()=>{
-  console.log(t.clientWidth)
-}

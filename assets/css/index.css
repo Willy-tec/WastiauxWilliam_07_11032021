@@ -142,6 +142,8 @@ main {
 .formulaire_input_button {
   cursor: pointer;
   height: auto;
+  text-align: left;
+  margin-left: 1rem;
 }
 
 .formulaire_input_button, .formulaire_input input {

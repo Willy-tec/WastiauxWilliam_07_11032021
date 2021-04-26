@@ -93,7 +93,6 @@ function makeRecipeListe(elm) {
   for(let el of elm.ingredients){
     index++
     ulDiv.appendChild(makeBaliseIng(el))
-    console.log(elm.ingredients.length + " index:" +index)
     if(index>3){
       if(index!=elm.ingredients.length ) ulDiv.appendChild(document.createTextNode("..."))
       break

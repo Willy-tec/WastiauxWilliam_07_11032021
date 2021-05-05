@@ -196,15 +196,28 @@ class Recettes {
  */
   filtrer_via_input(inpuString){
     let str = this.normalizeStr(inpuString);
+
+
+/*     for(let recette of this.recettes_listes){
+      if(this.normalizeStr(recette.name).match(inpuString)){
+        console.log(recette.name)
+      }
+    } */
+
     return this.recettes_listes.filter(el=>{
+      let isOk = false
       let string = this.normalizeStr(el.name)
       if(string.match(str)) return el
       string = this.normalizeStr(el.description)
       if(string.match(str)) return el
-      el.ingredients.forEach(elt =>{
+      for(let elt of el.ingredients){
         string = this.normalizeStr(elt.ingredient)
-        if(string.match(str)) return el
-      })
+        if(string.match(str)){
+          isOk = true;
+          break;
+        } 
+      }
+      if(isOk) return el;
     })
   }
 }

@@ -86,14 +86,11 @@ function makeRecipeListe(elm) {
     type: "ul",
     classTitle: "recette_description_detail_ingredient"
   })
-/*   elm.ingredients.forEach((item, index) => {
-    ulDiv.appendChild(makeBaliseIng(item))
-  }) */
+
   let index = 0;
   for(let el of elm.ingredients){
     index++
     ulDiv.appendChild(makeBaliseIng(el))
-    console.log(elm.ingredients.length + " index:" +index)
     if(index>3){
       if(index!=elm.ingredients.length ) ulDiv.appendChild(document.createTextNode("..."))
       break

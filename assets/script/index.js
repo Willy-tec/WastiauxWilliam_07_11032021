@@ -126,7 +126,31 @@ function normaliser(str){
     let str = tag.querySelector("span")
     recettes.reset_liste(recettes.filtrer(str.textContent, str.dataset.type))
   }
-  if(searchBar.value.length>2) recettes.reset_liste(recettes.filtrer_via_input(searchBar.value));
+
+  if(searchBar.value.length>2){
+    // Protocole n°1
+/*     console.time()
+    for(let i = 0; i<5000; i++){
+      recettes.reset_liste(recipes);
+      recettes.reset_liste(recettes.filtrer_via_input3(searchBar.value));
+    }
+    console.timeEnd(); */
+    // Protocole n°2
+    let tempArr = []
+    for(let i = 0; i < 15; i++){
+      let temp1 = Date.now();
+      for(let i = 0; i<5000; i++){
+        recettes.reset_liste(recipes);
+        recettes.reset_liste(recettes.filtrer_via_input4(searchBar.value));
+      }
+      tempArr.push(Date.now() - temp1)
+
+    }
+    let sum = tempArr.reduce((a, b) => a + b)
+    console.log(sum)
+    console.log(sum/tempArr.length)
+
+  } 
 
   upgrade_liste_item_tag();
   upgrade_affichage_liste_recette();

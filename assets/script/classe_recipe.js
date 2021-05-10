@@ -196,28 +196,47 @@ class Recettes {
  */
   filtrer_via_input(inpuString){
     let str = this.normalizeStr(inpuString);
-
-
-/*     for(let recette of this.recettes_listes){
-      if(this.normalizeStr(recette.name).match(inpuString)){
-        console.log(recette.name)
-      }
-    } */
-
     return this.recettes_listes.filter(el=>{
-      let isOk = false
-      let string = this.normalizeStr(el.name)
-      if(string.match(str)) return el
-      string = this.normalizeStr(el.description)
-      if(string.match(str)) return el
-      for(let elt of el.ingredients){
-        string = this.normalizeStr(elt.ingredient)
-        if(string.match(str)){
-          isOk = true;
-          break;
-        } 
-      }
-      if(isOk) return el;
-    })
+      return this.normalizeStr(el.name).match(str) ? el 
+           : this.normalizeStr(el.description).match(str) ? el 
+           : el.ingredients.some(elt => this.normalizeStr(elt.ingredient).match(str)) ? el 
+           : false ;
+    }) 
+  }
+  filtrer_via_input1(inpuString){
+    let str = this.normalizeStr(inpuString);
+    return this.recettes_listes.filter(el=>{
+      return this.normalizeStr(el.name).match(str) ? el 
+           : this.normalizeStr(el.description).match(str) ? el 
+           : el.ingredients.filter(elt => this.normalizeStr(elt.ingredient).match(str)).length>0 ? el 
+           : false ;
+    }) 
+  }
+  filtrer_via_input2(inpuString){
+    let str = this.normalizeStr(inpuString);
+    return this.recettes_listes.filter(el=>{
+      return this.normalizeStr(el.description).match(str) ? el 
+           : this.normalizeStr(el.name).match(str) ? el 
+           : el.ingredients.filter(elt => this.normalizeStr(elt.ingredient).match(str)).length>0 ? el 
+           : false ;
+    }) 
+  }
+  filtrer_via_input3(inpuString){
+    let str = this.normalizeStr(inpuString);
+    return this.recettes_listes.filter(el=>{
+      return  el.ingredients.filter(elt => this.normalizeStr(elt.ingredient).match(str)).length>0 ? el 
+           : this.normalizeStr(el.description).match(str) ? el 
+           :  this.normalizeStr(el.name).match(str)? el 
+           : false ;
+    }) 
+  }
+  filtrer_via_input4(inpuString){
+    let str = this.normalizeStr(inpuString);
+    return this.recettes_listes.filter(el=>{
+      return  this.normalizeStr(el.description).match(str) ? el 
+           : el.ingredients.filter(elt => this.normalizeStr(elt.ingredient).match(str)).length>0 ? el 
+           :  this.normalizeStr(el.name).match(str)? el 
+           : false ;
+    }) 
   }
 }

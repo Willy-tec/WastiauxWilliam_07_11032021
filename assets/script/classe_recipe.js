@@ -133,7 +133,7 @@ class Recettes {
       appareil : () => appareilTri(this.recettes_listes),
       all : () => allTri(this.recettes_listes)
     }
-
+    //Equivalent d'un switch, mais en utilisant les propriétés d'un objet, et ses méthodes
     criteria[type]()
 
       function ingredientTri(box){
@@ -194,30 +194,13 @@ class Recettes {
  * @param {string} inpuString 
  * @returns {array} el
  */
-  filtrer_via_input(inpuString){
-    let str = this.normalizeStr(inpuString);
-
-
-/*     for(let recette of this.recettes_listes){
-      if(this.normalizeStr(recette.name).match(inpuString)){
-        console.log(recette.name)
-      }
-    } */
-
-    return this.recettes_listes.filter(el=>{
-      let isOk = false
-      let string = this.normalizeStr(el.name)
-      if(string.match(str)) return el
-      string = this.normalizeStr(el.description)
-      if(string.match(str)) return el
-      for(let elt of el.ingredients){
-        string = this.normalizeStr(elt.ingredient)
-        if(string.match(str)){
-          isOk = true;
-          break;
-        } 
-      }
-      if(isOk) return el;
-    })
-  }
+ filtrer_via_input(inpuString){
+  let str = this.normalizeStr(inpuString);
+  return this.recettes_listes.filter(el=>{
+    return this.normalizeStr(el.description).match(str) ? el 
+         : this.normalizeStr(el.name).match(str) ? el 
+         : el.ingredients.filter(elt => this.normalizeStr(elt.ingredient).match(str)).length>0 ? el 
+         : false ;
+  }) 
+}
 }

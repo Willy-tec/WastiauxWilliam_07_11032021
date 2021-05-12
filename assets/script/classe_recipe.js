@@ -127,7 +127,8 @@ class Recettes {
  */
   filtrer(keyword, type){
     let arr = [];
-     let criteria = {
+    let sup = this;
+    let criteria = {
       ingredient : () => ingredientTri(this.recettes_listes),
       outil : () => outilTri(this.recettes_listes),
       appareil : () => appareilTri(this.recettes_listes),
@@ -139,7 +140,7 @@ class Recettes {
       function ingredientTri(box){
         box.forEach(el => {
           el.ingredients.forEach(elt =>{
-            let str = normaliser(elt.ingredient)
+            let str = sup.normalizeStr(elt.ingredient)
             if(str.match(keyword)) arr.push(el)
           })
         })
@@ -148,7 +149,7 @@ class Recettes {
       function outilTri(box){
         box.forEach(el =>{
           el.ustensils.forEach(elt =>{
-          let str = normaliser(elt)
+          let str = sup.normalizeStr(elt)
           if(str.match(keyword)) arr.push(el)
           })
         })
@@ -156,28 +157,28 @@ class Recettes {
 
       function appareilTri(box){
         box.forEach(el =>{
-          let str = normaliser(el.appliance)
+          let str = sup.normalizeStr(el.appliance)
           if(str.match(keyword)) arr.push(el)
         })
       }
 
       function allTri(box){
         box.forEach(el =>{
-          let str = normaliser(el.appliance)
+          let str = sup.normalizeStr(el.appliance)
           if(str.match(keyword)){
             arr.push(el);
             return;
           }
           else {
             el.ustensils.forEach(elt => {
-              str = normaliser(elt)
+              str = sup.normalizeStr(elt)
               if(str.match(keyword)){
                 arr.push(el);
                 return;
               }
             })
             el.ingredients.forEach(elt =>{
-              str = normaliser(elt.ingredient)
+              str = sup.normalizeStr(elt.ingredient)
               if(str.match(keyword)){
                 arr.push(el);
                 return;

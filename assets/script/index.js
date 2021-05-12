@@ -13,6 +13,7 @@ searchBar.addEventListener("input", updtateTagFilter);
 Tag.setListener(updtateTagFilter);
 upgrade_liste_item_tag();
 upgrade_affichage_liste_recette();
+searchBar.value="";
 
 /**
  * Mise en place des listeners liée au champ de recherche "ingredient", "outil" et "appareil"

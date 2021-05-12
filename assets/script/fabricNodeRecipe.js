@@ -6,7 +6,7 @@
  * @param {object} elm 
  * @returns {HTMLElement}
  */
- function makeRecipeNode(elm) {
+ export function makeRecipeNode(elm) {
   let nodeArticle = document.createElement("article");
   nodeArticle.className = "recette";
   nodeArticle.setAttribute("data-id", elm.id)

@@ -1,3 +1,8 @@
+import {recipes} from './recipes.js';
+import {Recettes} from './classe_recipe.js'
+import {Tag} from './tag.js'
+import {makeRecipeNode} from './fabricNodeRecipe.js'
+
 const main = document.querySelector("main");
 const containerList = document.querySelectorAll(".formulaire_input_container");
 const formulaire_tag = document.querySelector(".formulaire_tag")

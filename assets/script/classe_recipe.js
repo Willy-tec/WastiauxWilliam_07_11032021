@@ -205,3 +205,5 @@ class Recettes {
   }) 
 }
 }
+
+export {Recettes}

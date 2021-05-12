@@ -86,9 +86,7 @@ function makeRecipeListe(elm) {
     type: "ul",
     classTitle: "recette_description_detail_ingredient"
   })
-/*   elm.ingredients.forEach((item, index) => {
-    ulDiv.appendChild(makeBaliseIng(item))
-  }) */
+
   let index = 0;
   for(let el of elm.ingredients){
     index++

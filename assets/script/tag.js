@@ -50,3 +50,5 @@ class Tag{
  */
   static get isListened(){ return Tag.listener !== null ? true: false}
 }
+
+export {Tag}

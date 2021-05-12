@@ -141,7 +141,7 @@ function normaliser(str){
       let temp1 = Date.now();
       for(let i = 0; i<5000; i++){
         recettes.reset_liste(recipes);
-        recettes.reset_liste(recettes.filtrer_via_input4(searchBar.value));
+        recettes.reset_liste(recettes.filtrer_via_input2(searchBar.value));
       }
       tempArr.push(Date.now() - temp1)
 

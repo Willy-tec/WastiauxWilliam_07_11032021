@@ -197,6 +197,7 @@ class Recettes {
  */
  filtrer_via_input(inpuString){
   let str = this.normalizeStr(inpuString);
+  str = str.trim()
   return this.recettes_listes.filter(el=>{
     return this.normalizeStr(el.description).match(str) ? el 
          : this.normalizeStr(el.name).match(str) ? el 

@@ -1,4 +1,3 @@
-# WastiauxWilliam_07_11032021
 <img src="assets/images/logo_toque.svg" alt="Logo représentant une toque">
 <h1>Les petits plats</h1>
 <h2>Développez un algorithme de recherche en JavaScript</h2>

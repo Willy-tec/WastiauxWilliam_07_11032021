@@ -67,6 +67,8 @@ main {
   background-color: #E7E7E7;
   border-radius: .5rem;
   border: none;
+  padding-right: 4.2rem;
+  text-overflow: ellipsis;
 }
 
 .formulaire_search_loupe {

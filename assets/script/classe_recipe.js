@@ -13,6 +13,7 @@ class Recettes {
   reset_liste(obj){
    // this.recettes_listes = this.original_liste;
    this.recettes_listes = obj;
+   this.makeStringFromRecipeArr()
   }
   /**
    * Faire la liste des ingrédients contenu dans chaque recette
@@ -195,15 +196,22 @@ class Recettes {
  * @param {string} inpuString 
  * @returns {array} el
  */
- filtrer_via_input(inpuString){
+
+filtrer_via_input(inpuString){
   let str = this.normalizeStr(inpuString);
   str = str.trim()
-  return this.recettes_listes.filter(el=>{
-    return this.normalizeStr(el.description).match(str) ? el 
-         : this.normalizeStr(el.name).match(str) ? el 
-         : el.ingredients.filter(elt => this.normalizeStr(elt.ingredient).match(str)).length>0 ? el 
-         : false ;
-  }) 
+
+  let arr =  this.stringArr.map(el=>el.match(str)) 
+  let sortie= []
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i]) sortie.push(this.recettes_listes[i])
+  }
+  return sortie
+}
+
+makeStringFromRecipeArr(){
+  this.stringArr = this.recettes_listes.map(el => JSON.stringify(el))
+  this.stringArr = this.stringArr.map(el => this.normalizeStr(el))
 }
 }
 

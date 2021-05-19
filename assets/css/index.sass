@@ -67,7 +67,7 @@ main
     &_tag
         display: grid
         width: 100%
-        grid-template-columns: repeat(auto-fill, 10%)
+        grid-template-columns: repeat(auto-fill, 10rem)
         grid-auto-columns: 10rem
         row-gap: 1rem
         column-gap: 1.25%
@@ -223,5 +223,77 @@ main
                 list-style: none
 
 @media ( max-width: 1200px )
+  html
+    padding: 3rem 1rem 0 1rem
   main
     grid-template-columns: 1fr 1fr
+  .formulaire
+    &_input
+
+      &_container
+
+        & input
+          width: 60rem
+        &_liste
+          width: 60rem
+          grid-template-columns: repeat(3, 20rem)
+      &_button
+
+@media ( max-width: 1040px )
+
+  .formulaire
+    &_input
+
+      &_container
+
+        & input
+          width: 40rem
+        &_liste
+          width: 40rem
+          grid-template-columns: repeat(2, 20rem)
+      &_button
+@media ( max-width: 820px )
+  .formulaire
+    &_input
+      &_container
+        & input
+          width: 20rem
+        &_liste
+          width: 20rem
+          grid-template-columns: repeat(1, 20rem)
+
+@media ( max-width: 724px )
+  main
+    grid-template-columns: 1fr
+  .formulaire
+    &_input
+      flex-direction: column
+      &_container
+        width: 100%
+        margin-left: 0
+        margin-top: 1rem
+        & input
+          width: 100%
+        &_liste
+          width: 100%
+          grid-template-columns: repeat(3, 20rem)
+      &_button
+        width: 100%
+        margin-left: 0
+      
+@media ( max-width: 560px )
+  .formulaire
+    &_input
+      &_container
+        & input
+        &_liste
+          grid-template-columns: repeat(2, 20rem)
+@media ( max-width: 370px )
+  .formulaire
+    &_input
+      &_container
+        & input
+        &_liste
+          grid-template-columns: repeat(1, 20rem)
+
+
